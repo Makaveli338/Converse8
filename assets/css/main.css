@@ -1,0 +1,26 @@
+﻿@import "tailwindcss";
+@tailwind utilities;
+
+button {
+    @apply duration-300 cursor-pointer py-[10px] px-[18px] flex items-center gap-2 text-xs ;
+}
+
+.btn-outline {
+    @apply bg-white hover:bg-gray-200 text-[#221E1F] font-medium rounded-full flex items-center;
+}
+
+.btn-primary {
+    @apply bg-[#00927C] hover:bg-[#2bd5bc] text-white font-medium rounded-full cursor-pointer items-center;
+} 
+
+.btn-secondary {
+    @apply bg-[#F5FFFD] hover:bg-[#2bd5bc] text-[#00927C] font-medium rounded-full cursor-pointer items-center px-10;
+} 
+
+.btn-primary-gradient {
+    background-image: linear-gradient(180deg, #223A99 0%, #2B49BF 100%);
+}
+
+.btn-primary-gradient:hover {
+    background-image: none;
+}
