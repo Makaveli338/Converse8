@@ -1,11 +1,11 @@
 <template >
-  <div class="mb-24">
+ 
     
 
   <Header />
   <Banner />
   <Footer />
-</div>
+
 
 
 </template>
