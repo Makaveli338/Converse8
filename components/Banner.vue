@@ -1,7 +1,7 @@
 <template>
   <!-- Section 1 -->
   <section
-    class="relative lg:bg-[url('public/Background.jpg')] bg-cover bg-no-repeat bg-center mx-auto w-[96%] lg:h-[595px] mt-8 rounded-4xl bg-gradient-to-r from-[#EBFEC8] via-[#FFF4DA] to-[#DEE5FE]"
+    class="relative  lg:bg-[url('public/Background.jpg')] bg-cover bg-no-repeat bg-center mx-auto w-[96%] lg:h-[595px] mt-8 rounded-4xl bg-gradient-to-r from-[#EBFEC8] via-[#FFF4DA] to-[#DEE5FE]"
   >
     <!-- Text box -->
 
@@ -87,12 +87,12 @@
   </section>
   <!-- Section 2 -->
 
-  <section class="mt-24 md:mt-50 lg:mt-24 mx-8 content-center">
+  <section class="mt-24 md:mt-50 lg:mt-24 mx-auto w-[96%]  content-center">
     <!-- Customer surpport made easy -->
     <div class="text-center">
       <div class="flex justify-center relative">
         <img
-          class="-mt-12 md:-ml-[40%] -ml-[85%] lg:md:-ml-[22%] absolute"
+          class="-mt-12 md:-ml-[40%] -ml-[90%] lg:-ml-[26%] absolute"
           src="public/crown.svg"
           alt=""
         />
@@ -109,9 +109,9 @@
     <!-- Details card  -->
 
     <div
-      class="mx-auto lg:ml-50 mt-24 bg-[#F1F0FE] lg:max-w-[60%] md:max-w-[80%] rounded-4xl grid md:grid-cols-2"
+      class="mx-auto lg:ml-50 mt-24 bg-[#F1F0FE] lg:max-w-[60%] md:max-w-[80%] w-[96%] px-6  rounded-4xl grid md:grid-cols-2"
     >
-      <div class="py-9 ml-12 md:relative">
+      <div class="py-9  md:relative">
         <img src="public/Messageicon.svg" />
         <h1 class="font-medium mt-4">Chat Management</h1>
         <p class="mt-4 font-light text-[#12141D]">
@@ -133,9 +133,9 @@
     <div class="mt-9 lg:flex grid gap-8 lg:px-6">
       <!-- Left container -->
       <div
-        class="bg-[#FFFAF0] w-full lg:max-w-[60%] md:max-w-[80%] md:mx-auto lg:max-h-[489px] rounded-4xl bg-no-repeat"
+        class="bg-[#FFFAF0] mx-auto lg:max-h-[489px] w-[96%] px-6 rounded-4xl bg-no-repeat"
       >
-        <div class="px-12 mt-9">
+        <div class=" mt-9">
           <img src="public/bot.svg" />
           <h1 class="font-medium mt-4">Bot Studio</h1>
           <p class="mt-4 font-light text-[#12141D]">
@@ -151,9 +151,9 @@
 
       <!-- Right container -->
       <div
-        class="bg-[#F4FBF6] w-full md:max-w-[80%] md:mx-auto lg:mt-0 lg:max-h-[489px] rounded-4xl"
+        class="bg-[#F4FBF6] mx-auto lg:mt-0 lg:max-h-[489px] w-[96%] px-6 rounded-4xl"
       >
-        <div class="px-12 mt-9">
+        <div class=" mt-9">
           <img src="public/loudspeaker.svg" />
           <h1 class="font-medium mt-4">Broadcast</h1>
           <p class="mt-4 font-light text-[#12141D]">
@@ -172,9 +172,9 @@
   <!-- How it works -->
 
    <div
-      class="lg:bg-[url('/Background2.jpg')]  bg-no-repeat h-auto bg-contain   mx-auto w-[96%] container grid place-content-center rounded-4xl mt-56"
+      class="bg-[url('/Background2.jpg')]  bg-no-repeat h-auto lg:bg-contain bg-cover mx-auto container grid place-content-center rounded-4xl mt-15 lg:mt-60" 
     >
-      <div class="py-20 lg:pb-0 pb-4 pl-12 flex">
+      <div class="lg:pt-20 lg:pb-4 py-10  px-12 flex">
         <img class=" hidden lg:block" src="public/startfromscratch.svg" />
 
         <div>
@@ -351,13 +351,17 @@
             class="border border-[#EAECF0] lg:w-56 flex gap-1 mt-1.5 h-11 rounded-xl p-1"
           >
             <button
+                @click="state.billingCycle = 'monthly'"
+      :class="state.billingCycle === 'monthly' ? activeClass : inactiveClass"
               class="duration-300 cursor-pointer text-[#475467] w-full flex justify-center hover:bg-[#2bd5bc] rounded-xl"
             >
               Monthly
             </button>
 
             <button
-              class="duration-300 cursor-pointer  bg-[#00927C] text-white w-full  rounded-xl flex justify-center hover:bg-[#2bd5bc]"
+             @click="state.billingCycle = 'yearly'"
+      :class="state.billingCycle === 'yearly' ? activeClass : inactiveClass"
+              class="duration-300 cursor-pointer  text-[#475467] w-full  rounded-xl flex justify-center hover:bg-[#2bd5bc]"
             >
               Yearly
             </button>
@@ -406,16 +410,16 @@
 
           <img class="mt-8" src="public/flower.svg" />
           <p class="text-[#43A363] font-medium leading-8 mt-6">Personal plan</p>
-          <p class="text-[#101828] text-2xl leading-12">$10/month</p>
-          <p class="text-[#475467] leading-6">Billed Annualy</p>
+          <p class="text-[#101828] text-2xl leading-12">  ${{ personalPrice }}<span>{{ personalPer }}</span></p>
+          <p class="text-[#475467] leading-6">{{ billingText }}</p>
           <button
             class="w-66 mt-2 font-semibold rounded-4xl justify-center text-white bg-[#43A363] h-12 mb-4"
           >
-            Pay $120
+            Pay  ${{ personalPrice }}
           </button>
         </div>
 
-        <div class="bg-white p-8 grid gap-4 text-[#475467] z-10 font-light">
+        <div class="bg-white p-8 grid md:gap-4 gap-2 text-[#475467] z-10 font-light">
           <h1 class="text-[#101828] font-normal">Features:</h1>
           <p class="flex gap-3 items-center">
             <svg
@@ -553,16 +557,16 @@
 
           <img class="mt-8" src="public/lightning2.svg" />
           <p class="text-[#9C7004] font-medium leading-8 mt-6">Team plan</p>
-          <p class="text-[#101828] text-2xl leading-12">$10/month</p>
-          <p class="text-[#475467] leading-6">Billed Annualy</p>
+          <p class="text-[#101828] text-2xl leading-12"> ${{ teamPrice }}<span>{{ personalPer }}</span></p>
+          <p class="text-[#475467] leading-6">{{ billingText }}</p>
           <button
             class="w-66 mt-2 font-semibold rounded-4xl justify-center text-white bg-[#D89B04] h-12 mb-4"
           >
-            Pay $120
+            Pay  ${{ teamPrice }}
           </button>
         </div>
 
-        <div class="bg-white p-8 grid gap-4 text-[#475467] z-10 font-light">
+        <div class="bg-white p-8 grid md:gap-4 gap-2 text-[#475467] z-10 font-light">
           <h1 class="text-[#101828] font-normal">
             Everything in Basic Plan plus:
           </h1>
@@ -704,16 +708,16 @@
           <p class="text-[#013DFF] font-medium leading-8 mt-6">
             Enterprise plan
           </p>
-          <p class="text-[#101828] text-2xl leading-12">$10/month</p>
-          <p class="text-[#475467] leading-6">Billed Annualy</p>
+          <p class="text-[#101828] text-2xl leading-12"> ${{ enterprisePrice }}<span>{{ personalPer }}</span></p>
+          <p class="text-[#475467] leading-6">{{ billingText }}</p>
           <button
             class="w-66 mt-2 font-semibold rounded-4xl justify-center text-white bg-[#013DFF] h-12 mb-4"
           >
-            Pay $120
+            Pay ${{ enterprisePrice }}
           </button>
         </div>
 
-        <div class="bg-white p-8 grid gap-4 text-[#475467] z-10 font-light">
+        <div class="bg-white p-8 grid md:gap-4 gap-2 text-[#475467] z-10 font-light">
           <h1 class="text-[#101828] font-normal">
             Everything in Basic Plan plus:
           </h1>
@@ -819,12 +823,12 @@
   <!-- Faq section -->
 
   <section
-    class="w-[100%] md:max-w-[90%] container mx-auto mt-24 lg:flex justify-between"
+    class="w-[96%] md:max-w-[90%]  mx-auto mt-24 lg:flex justify-between"
   >
     <!-- right side -->
-    <div class="grid lg:w-[59%] w-[90%] mx-auto pl-6">
+    <div class="grid lg:w-[59%] mx-auto px-6">
       <div>
-        <h1 class="text-[#101828] text-2xl font-medium flex">
+        <h1 class="text-[#101828] md:text-2xl text-[20px] font-medium flex">
           Frequently Asked Questions
           <img class="ml-4" src="public/smileyface.svg" />
         </h1>
@@ -835,7 +839,7 @@
 
       <!-- Faq item 1 -->
       <div class="mt-8">
-        <h2 class="text-[#101828] text-lg flex justify-between">
+        <h2 class="text-[#101828] md:text-lg text-base flex justify-between">
           Is there a free trial available?
           <svg
             class="cursor-pointer"
@@ -876,7 +880,7 @@
         <p
           v-show="isOpen['dropdown1']"
           id="answer-1"
-          class="font-extralight text-[#475467]"
+          class="font-extralight text-sm md:text-base text-[#475467]"
         >
           Yes, you can try us for free for 30 days. If you want, we’ll provide
           you with a free, personalized 30-minute onboarding call to get you up
@@ -885,8 +889,8 @@
       </div>
 
       <!-- Faq item 2 -->
-      <div class="mt-8 border-t border-[#EAECF0]">
-        <h2 class="text-[#101828] py-6 text-lg flex justify-between">
+      <div class="md:mt-8 mt-4 border-t border-[#EAECF0]">
+        <h2 class="text-[#101828] md:py-6 py-4 md:text-lg text-base flex justify-between">
           Can I change my plan later?
 
           <svg
@@ -928,7 +932,7 @@
         <p
           v-show="isOpen['dropdown2']"
           id="answer-2"
-          class="font-extralight text-[#475467]"
+          class="font-extralight text-sm md:text-base text-[#475467]"
         >
           Yes, you can try us for free for 30 days. If you want, we’ll provide
           you with a free, personalized 30-minute onboarding call to get you up
@@ -938,7 +942,7 @@
 
       <!-- Faq item 3 -->
       <div class="border-t border-[#EAECF0]">
-        <h2 class="text-[#101828] py-6 text-lg flex justify-between">
+        <h2 class="text-[#101828] md:py-6 py-4 md:text-lg text-base flex justify-between">
           What is your cancellation policy?
           <svg
             class="cursor-pointer"
@@ -989,7 +993,7 @@
 
       <!-- Faq item 4 -->
       <div class="border-t border-[#EAECF0]">
-        <h2 class="text-[#101828] py-6 text-lg flex justify-between">
+        <h2 class="text-[#101828] md:py-6 py-4 md:text-lg text-base flex justify-between">
           Can other info be addded in a invoice?
           <svg
             class="cursor-pointer"
@@ -1030,7 +1034,7 @@
         <p
           v-show="isOpen['dropdown4']"
           id="answer-4"
-          class="font-extralight text-[#475467]"
+          class="font-extralight text-sm md:text-base text-[#475467]"
         >
           Yes, you can try us for free for 30 days. If you want, we’ll provide
           you with a free, personalized 30-minute onboarding call to get you up
@@ -1040,7 +1044,7 @@
 
       <!-- Faq item 5 -->
       <div class="border-t border-[#EAECF0]">
-        <h2 class="text-[#101828] py-6 text-lg flex justify-between">
+        <h2 class="text-[#101828] md:py-6 py-4 md:text-lg text-base flex justify-between">
           How does billing work?
           <svg
             class="cursor-pointer"
@@ -1081,7 +1085,7 @@
         <p
           v-show="isOpen['dropdown5']"
           id="answer-5"
-          class="font-extralight text-[#475467]"
+          class="font-extralight text-sm md:text-base text-[#475467]"
         >
           Yes, you can try us for free for 30 days. If you want, we’ll provide
           you with a free, personalized 30-minute onboarding call to get you up
@@ -1091,7 +1095,7 @@
 
       <!-- Faq item 6 -->
       <div class="border-t border-[#EAECF0]">
-        <h2 class="text-[#101828] py-6 text-lg flex justify-between">
+        <h2 class="text-[#101828] md:py-6 py-4 md:text-lg text-base flex justify-between">
           How do I change my account e-mail?
           <svg
             class="cursor-pointer"
@@ -1132,7 +1136,7 @@
         <p
           v-show="isOpen['dropdown6']"
           id="answer-6"
-          class="font-extralight text-[#475467]"
+          class="font-extralight text-sm md:text-base text-[#475467]"
         >
           Yes, you can try us for free for 30 days. If you want, we’ll provide
           you with a free, personalized 30-minute onboarding call to get you up
@@ -1149,18 +1153,52 @@
   </section>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive } from "vue";
+<script setup lang="ts">
+import { reactive, computed } from 'vue';
 
-export default defineComponent({
-  setup() {
-    const isOpen = reactive<Record<string, boolean>>({});
+// Reactive state for dropdowns
+const isOpen = reactive<Record<string, boolean>>({});
 
-    const toggleAnswer = (dropdown: string) => {
-      isOpen[dropdown] = !isOpen[dropdown];
-    };
+// Function to toggle dropdown visibility
+const toggleAnswer = (dropdown: string) => {
+  isOpen[dropdown] = !isOpen[dropdown];
+};
 
-    return { isOpen, toggleAnswer };
+// Reactive state for billing cycle and pricing
+const state = reactive({
+  billingCycle: 'yearly',
+  pricing: {
+    personal: {
+      monthly: 10,
+      yearly: 120,
+    },
+    team: {
+      monthly: 15,
+      yearly: 180,
+    },
+    enterprise: {
+      monthly: 25,
+      yearly: 300,
+    },
   },
 });
+
+// Computed properties for pricing and billing
+const isYearly = computed(() => state.billingCycle === 'yearly');
+const personalPrice = computed(() =>
+  isYearly.value ? state.pricing.personal.yearly : state.pricing.personal.monthly
+);
+const personalPer = computed(() => (isYearly.value ? '/year' : '/month'));
+const billingText = computed(() =>
+  isYearly.value ? 'Billed Annually' : 'Billed Monthly'
+);
+const teamPrice = computed(() =>
+  isYearly.value ? state.pricing.team.yearly : state.pricing.team.monthly
+);
+const enterprisePrice = computed(() =>
+  isYearly.value ? state.pricing.enterprise.yearly : state.pricing.enterprise.monthly
+);
+// Classes for active/inactive buttons
+const activeClass = "bg-[#00927C] text-white";
+const inactiveClass = "text-[#475467]";
 </script>
